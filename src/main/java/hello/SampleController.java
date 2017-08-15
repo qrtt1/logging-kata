@@ -45,7 +45,7 @@ public class SampleController extends SpringBootServletInitializer {
 
     @RequestMapping("/longQuery")
     long longQuery() throws InterruptedException {
-        long sleep = Math.abs(random.nextLong()) % 30 * 1000;
+        long sleep = Math.abs(random.nextLong()) % (30 * 1000);
         Thread.sleep(sleep);
         return sleep;
     }

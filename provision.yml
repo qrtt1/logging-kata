@@ -10,9 +10,19 @@
       tomcat:
         src: elasticsearch.jvm.options.j2
         dest: /opt/apps/elasticsearch-5.5.1/config/jvm.options
+        owner: ubuntu
       elasticsearch:
         src: tomcat-users.xml.j2
         dest: /opt/apps/apache-tomcat-8.5.20/conf/tomcat-users.xml
+        owner: ubuntu
+      nginx-site:
+        src: nginx-default.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+      nginx-conf:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+        owner: root
 
   tasks:
     - name: install nginx
@@ -55,5 +65,9 @@
       tags:
         - configurations
 
+    - name: update configurations
+      command: nginx -s reload
+      tags:
+        - configurations
 
 
