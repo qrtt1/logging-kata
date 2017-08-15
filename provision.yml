@@ -15,6 +15,10 @@
         src: tomcat-users.xml.j2
         dest: /opt/apps/apache-tomcat-8.5.20/conf/tomcat-users.xml
         owner: ubuntu
+      kibana:
+        src: kibana.yml.j2
+        dest: /opt/apps/kibana-5.5.1-linux-x86_64/config/kibana.yml 
+        owner: ubuntu
       nginx-site:
         src: nginx-default.j2
         dest: /etc/nginx/sites-available/default

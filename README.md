@@ -46,3 +46,38 @@ sh start-services.sh
 ```
 cp demo.war /opt/apps/apache-tomcat-8.5.20/webapps/
 ```
+
+
+## fluentd
+
+* 學習安裝 plugin
+* 學習設定 td-agent.conf（source, filter, match {output, store}）
+* 學習接客製的 log（使用 [regex editor](http://fluentular.herokuapp.com/) 或找社群的 plugin）
+
+```
+root@fluentd-aggregator:/etc/td-agent# td-agent-gem list | grep fluent
+WARN: Unresolved specs during Gem::Specification.reset:
+      msgpack (< 2, >= 0.5.11)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+fluent-logger (0.6.1)
+fluent-mixin-config-placeholders (0.4.0)
+fluent-mixin-plaintextformatter (0.2.6)
+fluent-plugin-bigquery (0.4.4)
+fluent-plugin-buffer-lightening (0.0.2)
+fluent-plugin-elasticsearch (1.9.2)
+fluent-plugin-gcs (0.3.0)
+fluent-plugin-google-cloud (0.5.3)
+fluent-plugin-kafka (0.4.1)
+fluent-plugin-mongo (0.7.16)
+fluent-plugin-rewrite-tag-filter (1.5.5)
+fluent-plugin-s3 (0.8.0)
+fluent-plugin-scribe (0.10.14)
+fluent-plugin-secure-forward (0.4.3)
+fluent-plugin-td (0.10.29)
+fluent-plugin-td-monitoring (0.2.2)
+fluent-plugin-ua-parser (1.1.0)
+fluent-plugin-webhdfs (0.4.2)
+fluentd (0.12.39)
+fluentd-ui (0.4.3)
+```
