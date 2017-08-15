@@ -1,0 +1,59 @@
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars:
+    softwares:
+      - http://ftp.tc.edu.tw/pub/Apache/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz
+      - https://artifacts.elastic.co/downloads/kibana/kibana-5.5.1-linux-x86_64.tar.gz
+      - https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.1.tar.gz
+    configurations:
+      tomcat:
+        src: elasticsearch.jvm.options.j2
+        dest: /opt/apps/elasticsearch-5.5.1/config/jvm.options
+      elasticsearch:
+        src: tomcat-users.xml.j2
+        dest: /opt/apps/apache-tomcat-8.5.20/conf/tomcat-users.xml
+
+  tasks:
+    - name: install nginx
+      apt:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      with_items:
+        - nginx
+
+    - name: prepare dir
+      file: 
+        path: "{{item}}"
+        state: directory
+        owner: "ubuntu"
+      with_items:
+        - /opt/downloads/
+        - /opt/apps/
+
+    - name: download files
+      get_url: 
+        url: "{{item}}"
+        dest: /opt/downloads/
+        owner: "ubuntu"
+      with_items: "{{softwares}}"
+
+    - name: unpack files
+      unarchive:
+        src: "/opt/downloads/{{item.split('/')[-1]}}"
+        dest: /opt/apps/
+        owner: "ubuntu"
+      with_items: "{{softwares}}"
+
+    - name: update configurations
+      template:
+        src: "{{item.value.src}}"
+        dest: "{{item.value.dest}}"
+        owner: "ubuntu"
+      with_dict: "{{configurations}}"
+      tags:
+        - configurations
+
+
+
