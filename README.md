@@ -1,4 +1,4 @@
-# monitoring lab
+# logging kata
 
 ## 基本情境
 
