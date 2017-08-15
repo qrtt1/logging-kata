@@ -81,3 +81,8 @@ fluent-plugin-webhdfs (0.4.2)
 fluentd (0.12.39)
 fluentd-ui (0.4.3)
 ```
+
+### elasticsearch + kibana
+
+* 學習設定 dashboard 與 visualization
+* 認識 [curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/5.0/index.html) 定時清 log
