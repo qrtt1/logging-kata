@@ -2,7 +2,6 @@ package hello;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,6 +34,12 @@ public class SampleController extends SpringBootServletInitializer {
     @RequestMapping("/keepMemory")
     long keepMemory() {
         keepMemory.add(new byte[1024 * 1024]);
+        return keepMemory.size();
+    }
+
+    @RequestMapping("/releaseMemory")
+    long releaseMemory() {
+        keepMemory.clear();
         return keepMemory.size();
     }
 
