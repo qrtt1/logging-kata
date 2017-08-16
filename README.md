@@ -147,3 +147,17 @@ sudo td-agent-gem install fluent-plugin-elasticsearch
 
 * 學習設定 dashboard 與 visualization
 * 認識 [curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/5.0/index.html) 定時清 log
+
+#### api
+
+查詢 index
+
+```
+curl 'localhost:9200/_cat/indices?v'
+```
+
+刪除 index
+
+```
+curl -XDELETE 'localhost:9200/{index-name}'
+```
