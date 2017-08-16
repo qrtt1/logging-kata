@@ -122,6 +122,27 @@ fluentd (0.12.39)
 fluentd-ui (0.4.3)
 ```
 
+#### 安裝 plugins
+
+將 log 通過安全管道傳給另一台 fluentd 的 plugin
+```
+sudo td-agent-gem install fluent-plugin-secure-forward
+```
+
+將 log 資料重整用的相關 plugin
+
+```
+sudo td-agent-gem install fluent-plugin-record-modifier
+sudo td-agent-gem install fluent-plugin-ua-parser
+```
+
+將 log 輸出至 elasticsearch 的 plugin
+
+```
+sudo td-agent-gem install fluent-plugin-elasticsearch
+```
+
+
 ### elasticsearch + kibana
 
 * 學習設定 dashboard 與 visualization
