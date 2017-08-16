@@ -74,4 +74,12 @@
       tags:
         - configurations
 
+    - name: copy war
+      copy:
+        src: ./demo.war
+        dest: /opt/apps/apache-tomcat-8.5.20/webapps/demo.war
+        owner: "ubuntu"
+      tags:
+        - war
+
 

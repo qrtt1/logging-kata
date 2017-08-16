@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,11 +44,10 @@ public class SampleController extends SpringBootServletInitializer {
         return keepMemory.size();
     }
 
-    @RequestMapping("/longQuery")
-    long longQuery() throws InterruptedException {
-        long sleep = Math.abs(random.nextLong()) % (30 * 1000);
-        Thread.sleep(sleep);
-        return sleep;
+    @RequestMapping("/longQuery/{howLong}")
+    long longQuery(@PathVariable Long howLong) throws InterruptedException {
+        Thread.sleep(howLong);
+        return howLong;
     }
 
     public static void main(String[] args) throws Exception {
