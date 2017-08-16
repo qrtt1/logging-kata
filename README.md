@@ -52,7 +52,8 @@ cp demo.war /opt/apps/apache-tomcat-8.5.20/webapps/
 
 * 學習安裝 plugin ( `sh install-plugins.sh` )
 * 學習設定 td-agent.conf（source, filter, match {output, store}）
-* 學習接客製的 log（使用 [regex editor](http://fluentular.herokuapp.com/) 或找社群的 plugin）
+  * 學習接客製的 log（使用 [regex editor](http://fluentular.herokuapp.com/) 或找社群的 plugin）
+  * 參考 fluentd [source code](https://github.com/fluent/fluentd/tree/master/lib/fluent/plugin) 裡的範本
 
 ```
 root@fluentd-aggregator:/etc/td-agent# td-agent-gem list | grep fluent
