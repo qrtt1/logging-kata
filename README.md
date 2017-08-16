@@ -34,6 +34,13 @@ cd /vagrant
 ansible-playbook provision.yml
 ```
 
+在 ansible 腳本內，我們也裝了 nginx，可以試著連線測試，看是否有成功連線（一開始會是 404 Not Found）
+
+```
+http://192.168.55.66
+```
+
+
 啟動服務（如果 vm 資源不夠，可能會卡一陣子）
 
 ```
