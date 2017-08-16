@@ -48,11 +48,43 @@ cd /vagrant
 sh start-services.sh
 ```
 
-部署範例程式
+### 部署範例程式
 
 ```
-cp demo.war /opt/apps/apache-tomcat-8.5.20/webapps/
+cp <you-war> /opt/apps/apache-tomcat-8.5.20/webapps/
 ```
+
+PS. 這個在 ansible 內有做，但如果有重新編譯的話，記得複製一下
+
+#### Hello World
+
+```
+curl http://192.168.55.66/longQuery/
+```
+
+#### longQuery
+
+```
+curl http://192.168.55.66/longQuery/{howLong}
+```
+
+呼叫下去會 delay `howLong` ms
+
+#### keepMemory
+
+```
+curl http://192.168.55.66/keepMemory
+```
+
+呼叫一次，增加 1 MB 記憶體用量
+
+#### releaseMemory
+
+```
+curl http://192.168.55.66/releaseMemory
+```
+
+清空持有的記憶體用量
 
 
 ## fluentd
