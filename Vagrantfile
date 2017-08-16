@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
     sudo echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && apt-get install -y oracle-java8-installer
     sudo apt-get install -y make gcc python-pip
     sudo curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent2.sh | sh
-    sudo pip install --upgrade pip
-    sudo pip install ansible
+    sudo pip install --upgrade pip ; sudo pip install ansible
+    exit 0
   SHELL
 end
