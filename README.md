@@ -142,6 +142,11 @@ sudo td-agent-gem install fluent-plugin-ua-parser
 sudo td-agent-gem install fluent-plugin-elasticsearch
 ```
 
+啟動 fluentd
+
+```
+td-agent -c lab-td-agent.conf
+```
 
 ### elasticsearch + kibana
 
