@@ -4,6 +4,6 @@
               xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
               version="1.0">
     <role rolename="manager-gui"/>
-    <user username="demo_man" password="demo man's password" 
+    <user username="{{jmxproxy.name}}" password="{{jmxproxy.password}}" 
         roles="admin,admin-gui,admin-script,manager,manager-gui,manager-script,manager-jmx,manager-status"/>
 </tomcat-users>

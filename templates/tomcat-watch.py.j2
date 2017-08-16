@@ -1,0 +1,21 @@
+import urllib2
+import json
+
+def get_tomcat_info():
+    auth = "{{jmxproxy.name}}:{{jmxproxy.password}}"
+    url = 'http://localhost:8080/manager/jmxproxy?qry=Catalina:name=%22http-nio-8080%22,type=ThreadPool'
+
+    request = urllib2.Request(url)
+    request.add_header("Authorization", "Basic %s" % auth.encode("base64").strip())
+    result = urllib2.urlopen(request)
+
+    data = {}
+    selected = ['currentThreadCount', 'currentThreadsBusy', 'maxThreads']
+    for entry in [ x.strip().split(":") for x in result.read().split("\n") if ":" in x]:
+        if entry[0] in selected:
+            data[entry[0]]=int(entry[1].strip())
+
+    data['usage'] = 100 * ((data['currentThreadCount'] / (0.0 + data['maxThreads'])))
+    print json.dumps(data)
+
+get_tomcat_info()

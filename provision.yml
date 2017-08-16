@@ -2,6 +2,9 @@
   connection: local
   become: yes
   vars:
+    jmxproxy: 
+      name: demo_user
+      password: demo_user's password
     softwares:
       - http://ftp.tc.edu.tw/pub/Apache/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz
       - https://artifacts.elastic.co/downloads/kibana/kibana-5.5.1-linux-x86_64.tar.gz
@@ -27,6 +30,11 @@
         src: nginx.conf.j2
         dest: /etc/nginx/nginx.conf
         owner: root
+      td-agent-tomcat-metric:
+        src: tomcat-watch.py.j2
+        dest: ./tomcat-watch.py
+        owner: ubuntu
+
 
   tasks:
     - name: install nginx
